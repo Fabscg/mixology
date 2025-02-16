@@ -1,38 +1,62 @@
 <template>
-  <div class="q-pa-md">
-    <main-header :props="props" class="flex flex-center"></main-header>
-    <div class="q-gutter-y-md column" style="width: 300px; max-width: 100%">
-      <q-toolbar class="bg-secondary text-white rounded-borders">
-        <q-btn round dense flat icon="menu" class="q-mr-xs" />
-        <q-space />
+  <navigation-bar />
+  <div>
+    <main-header :props="props.title" :subtitle="props.subtitle"></main-header>
+    <div class="q-pa-md" style="max-width: 300px">
+      <q-input
+        standout
+        bottom-slots
+        v-model="text"
+        label="Type your drink"
+        counter
+        maxlength="12"
+        :dense="dense"
+        width="200px"
+      >
+        <template v-slot:before>
+          <q-icon name="local_bar" />
+        </template>
 
-        <q-input dark dense standout v-model="text" input-class="text-right" class="q-ml-md">
-          <template v-slot:append>
-            <q-icon v-if="text === ''" name="search" />
-            <q-icon v-else name="clear" class="cursor-pointer" @click="text = ''" />
-          </template>
-        </q-input>
-      </q-toolbar>
+        <template v-slot:append>
+          <q-icon
+            v-if="text !== ''"
+            name="close"
+            @click="text = ''"
+            class="cursor-pointer"
+          />
+          <q-icon name="search" />
+        </template>
+
+        <template v-slot:hint> Field hint </template>
+      </q-input>
     </div>
-    <images-cocktails />
+    <div>
+      <images-cocktails />
+    </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
-import ImagesCocktails from 'pages/ImagesCocktails.vue'
-import MainHeader from 'src/pages/MainHeader..vue'
+import { ref } from "vue";
+import ImagesCocktails from "pages/ImagesCocktails.vue";
+import MainHeader from "src/components/MainHeader..vue";
+import NavigationBar from "src/components/NavigationBar.vue";
 export default {
-  name: 'MainLayout',
+  name: "MainLayout",
   components: {
     ImagesCocktails,
-    MainHeader
+    MainHeader,
+    NavigationBar,
   },
-  setup() {
-    const text = ref('')
+  data() {
     return {
-      text
-    }
-  }
-}
+      props: {
+        title: "Mixology",
+        subtitle: "Find your favorite cocktail",
+        dense: true,
+      },
+    };
+  },
+  setup() {},
+};
 </script>

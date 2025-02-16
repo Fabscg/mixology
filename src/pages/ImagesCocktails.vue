@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-lg">
     <q-carousel animated :autoplay="autoplay" v-model="slide" arrows navigation infinite>
       <q-carousel-slide
         v-for="image in images"
@@ -7,7 +7,7 @@
         :name="image.name"
         :img-src="image.imgSrc"
         height="50vh"
-        width="500px"
+        :width="500"
       >
       </q-carousel-slide>
     </q-carousel>
