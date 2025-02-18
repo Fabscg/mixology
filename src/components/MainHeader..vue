@@ -1,8 +1,17 @@
 <template>
   <div id="q-app">
     <div class="q-pa-md">
-      <q-layout view="lHh lpr lFf" container style="height: 200px" class="rounded-borders">
-        <q-header height="50" elevated class="bg-grey-3 text-primary mountains-of-christmas-bold">
+      <q-layout
+        view="lHh lpr lFf"
+        container
+        style="height: 200px"
+        class="rounded-borders"
+      >
+        <q-header
+          height="50"
+          elevated
+          class="bg-grey-3 text-primary mountains-of-christmas-bold"
+        >
           <q-toolbar>
             <q-toolbar-title class="text-center" style="font-size: 5em">
               <q-avatar style="font-size: 2em" class="avatar">
@@ -17,19 +26,19 @@
   </div>
 </template>
 <script>
-import { defineOptions } from 'vue'
+import { defineOptions } from "vue";
 export default {
-  name: 'MainHeader',
+  name: "MainHeader",
   setup() {
     defineOptions({
-      name: 'MainHeader'
-    })
-  }
-}
+      name: "MainHeader",
+    });
+  },
+};
 </script>
 <style scoped>
 .mountains-of-christmas-bold {
-  font-family: 'Mountains of Christmas', serif;
+  font-family: "Mountains of Christmas", serif;
   font-weight: 800;
   font-style: normal;
 }

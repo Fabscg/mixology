@@ -2,15 +2,25 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/IndexPage.vue") }],
+    component: () => import("src/components/MainLayout.vue"),
+    children: [
+      {
+        path: "/recipes",
+        component: () => import("components/RecipePage.vue"),
+        name: "recipes",
+      },
+      {
+        path: "/recipes/:id",
+        component: () => import("components/RecipeDetailPage.vue"),
+        name: "recipe",
+      },
+      {
+        path: "/History",
+        component: () => import("components/MyListPage.vue"),
+        name: "history",
+      },
+    ],
   },
-  {
-    path: "/recipes",
-    component: () => import("pages/RecipePage.vue"),
-    name: "recipes",
-  },
-
   // Always leave this as last one,
   // but you can also remove it
   {
